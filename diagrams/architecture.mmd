@@ -1,0 +1,27 @@
+flowchart TB
+    Engineer["Engineer / User"] --> Claude["Claude Code CLI"]
+    Claude --> Context["CLAUDE.md · project conventions"]
+    Claude --> Skills["Custom Skills"]
+    Skills --> Scaffold["/scaffold-terraform"]
+    Scaffold --> Plan["/tf-plan"]
+    Plan --> Apply["/tf-apply · approval required"]
+    Apply --> Terraform["Terraform IaC"]
+    Terraform --> AWS["AWS Infrastructure"]
+    AWS --> S3["Amazon S3 · site assets"]
+    S3 --> CF["Amazon CloudFront"]
+    Skills --> Deploy["/deploy"]
+    Deploy --> S3
+    Deploy --> CF
+
+    Claude --> Agents["Specialized Subagents"]
+    Agents --> Security["security-auditor"]
+    Agents --> Writer["tf-writer"]
+    Agents --> Cost["cost-optimizer"]
+    Claude <-->|"Approved tool use"| MCP["MCP · Terraform and AWS"]
+    Security --> MCP
+    Writer --> MCP
+    Claude --> Hooks["Safety Hooks"]
+    Hooks --> Say["SAY · prompt guard"]
+    Hooks --> Do["DO · pre-tool guard"]
+    Hooks --> Log["LOG · post-tool logger"]
+    Log --> LocalLog["Local deployment log · untracked"]

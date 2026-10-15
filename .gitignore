@@ -1,0 +1,7 @@
+# Terraform state — never commit
+terraform/*.tfstate
+terraform/*.tfstate.backup
+terraform/backend.hcl
+terraform/*.tfvars
+terraform/.terraform/
+terraform/.terraform.lock.hcl
